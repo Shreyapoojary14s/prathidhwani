@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+  <div class="container text-center mt-5">
+    <h1 class="display-4" style="color: #6a1b9a; font-family: 'Tiro Tamil', serif;">Welcome to <span style="color: #ff6f00; font-family: 'Tiro Devanagari Sanskrit', serif;">Prathidwani</span></h1>
+    <p class="lead" style="color: #4a148c; font-family: 'Mukta', sans-serif;">Experience the divine essence of classical music with our curated ragas.</p>
+    
+    <div class="d-flex justify-content-center">
+      <a href="{{ url_for('discover') }}" class="btn btn-lg shadow mt-3 px-4 py-2" style="border-radius: 25px; font-weight: bold; font-size: 1.2rem; background-color: #ff6f00; color: #fff;">Let's Dive In</a>
+    </div>
+
+    <div class="mt-5">
+      <img src="{{ url_for('static', filename='musical_instruments.jpg') }}" class="img-fluid rounded shadow-lg" alt="Carnatic Music" style="max-width: 100%; border-radius: 15px;">
+    </div>
+  </div>
+{% endblock %}

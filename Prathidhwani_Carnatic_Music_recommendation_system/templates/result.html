@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+  <div class="container mt-5">
+    <h1 class="display-4 text-center" style="color: #6a1b9a; font-family: 'Tiro Tamil', serif;">{{ title }}</h1>
+    <p class="lead text-center" style="color: #4a148c; font-family: 'Mukta', sans-serif;">{{ description }}</p>
+
+    <!-- Selected Raga Display -->
+    {% if raga_name %}
+      <div class="text-center my-4">
+        <h3 class="text-dark font-weight-bold">🎵 Raga Selected: <span style="color: #d50000;">{{ raga_name }}</span></h3>
+      </div>
+    {% endif %}
+
+    {% if songs %}
+      <!-- Autoplay First Song -->
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="embed-responsive embed-responsive-16by9 mb-4">
+            <iframe id="youtubePlayer" class="embed-responsive-item" 
+                    src="{{ songs[0].link | replace('watch?v=', 'embed/') }}?autoplay=1" 
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      </div>
+
+      <!-- Song List Display -->
+      <div class="row">
+        {% for song in songs[:5] %}
+          <div class="col-md-12">
+            <div class="card shadow mb-3 song-card" data-url="{{ song.link }}" style="cursor: pointer;">
+              <div class="card-body">
+                <h5 class="text-primary text-left">{{ song.raga }}</h5>  <!-- Raga Name Left-Aligned -->
+                <h6 class="text-success text-left">{{ song.singer }}</h6>  <!-- Singer Name Left-Aligned -->
+                <p class="text-dark text-left font-weight-bold">{{ song.title }}</p>  <!-- Song Name in Dark Black -->
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      
+    {% else %}
+      <p class="text-muted text-center">No songs found.</p>
+    {% endif %}
+
+    <!-- Back Buttons -->
+    <div class="mt-4 text-center">
+      <a href="{{ url_for('home') }}" class="btn btn-lg btn-success shadow px-4 py-2">Back to Home</a>
+      <a href="{{ url_for('discover') }}" class="btn btn-lg btn-warning shadow px-4 py-2">Back to Discover</a>
+    </div>
+  </div>
+
+  <!-- JavaScript to Handle Clicks -->
+  <script>
+    document.querySelectorAll('.song-card').forEach(card => {
+      card.addEventListener('click', function() {
+        let youtubeUrl = this.getAttribute('data-url').replace('watch?v=', 'embed/');
+        document.getElementById('youtubePlayer').src = youtubeUrl + "?autoplay=1";
+      });
+    });
+  </script>
+
+{% endblock %}

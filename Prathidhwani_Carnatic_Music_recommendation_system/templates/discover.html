@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block title %}Discover{% endblock %}
+
+{% block content %}
+  <div class="container text-center mt-5">
+    <h1 class="display-4" style="color: #6a1b9a; font-family: 'Tiro Tamil', serif;">
+      Discover the Magic of <span style="color: #ff6f00;">Carnatic Music</span>
+    </h1>
+    <p class="lead" style="color: #4a148c; font-family: 'Mukta', sans-serif;">
+      Immerse yourself in the enchanting world of ragas. Choose your exploration path:
+    </p>
+    
+    <div class="btn-group mt-4" role="group">
+      <a href="{{ url_for('time_based') }}" class="btn btn-lg shadow px-4 py-2" style="background-color: #ff6f00; color: #fff; border-radius: 10px;">Time</a>
+      <a href="{{ url_for('emotion_based') }}" class="btn btn-lg shadow px-4 py-2" style="background-color: #d50000; color: #fff; border-radius: 10px;">Emotion</a>
+      <a href="{{ url_for('season_based') }}" class="btn btn-lg shadow px-4 py-2" style="background-color: #2e7d32; color: #fff; border-radius: 10px;">Season</a>
+      <a href="{{ url_for('enthusiastic_listener') }}" class="btn btn-lg shadow px-4 py-2" style="background-color: #1976d2; color: #fff; border-radius: 10px;">Passion Mode</a>
+    </div>
+    
+    <div class="mt-4">
+      <img src="{{ url_for('static', filename='classical_music.jpg') }}" alt="Classical Music Instruments" class="img-fluid rounded shadow-lg" style="border-radius: 15px;">
+    </div>
+    
+    <hr>
+    <a href="{{ url_for('home') }}" class="btn btn-link" style="color: #6a1b9a; font-weight: bold;">Back to Home</a>
+  </div>
+{% endblock %}

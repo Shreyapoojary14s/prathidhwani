@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block title %}About{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <h1 class="display-4" style="color: #6a1b9a; font-family: 'Tiro Tamil', serif;">About Our Project</h1>
+  <p class="lead" style="color: #4a148c; font-family: 'Mukta', sans-serif;">
+    Prathidwani is a platform to explore the rich world of Carnatic music through curated ragas based on time, emotion, season, and more.
+  </p>
+  <hr>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 style="color: #2e7d32;">Guide</h3>
+      <p style="font-size: 1.2rem;">Rashmi R</p>
+      <h3 style="color: #d50000;">Developers</h3>
+      <p style="font-size: 1.2rem;">Pranitha T Manur<br>Shreya S Poojary</p>
+    </div>
+    <div class="col-md-6">
+      <img src="{{ url_for('static', filename='about_image.jpg') }}" alt="About Our Project" class="img-fluid rounded shadow">
+    </div>
+  </div>
+</div>
+{% endblock %}
